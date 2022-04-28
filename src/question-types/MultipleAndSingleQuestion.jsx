@@ -19,8 +19,6 @@ const MultipleAndSingleQuestion = forwardRef(({questionSetId,choiceAnswers, ques
             question_sets_id: questionSetId,
             answers_brief:answerBrief
         }
-        //   return  {multipleSingleAnswer}
-          
       }
   }))
 
