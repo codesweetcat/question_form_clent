@@ -10,7 +10,6 @@ const MultipleChoice = forwardRef(({questionSetId,choiceAnswers, questionIdex},r
  
   const [checkedState, setCheckedState] = React.useState(
       new Array(choiceAnswers['answers'].length).fill(false),
-
     );
 
     const describtion = choiceAnswers.describtion

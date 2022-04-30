@@ -1,8 +1,8 @@
-import { render, screen } from '@testing-library/react';
-import MultipleAndSingleQuestion from './MultipleAndSingleQuestion';
-import {clickNoneBox} from '../utils/utils'
+import { render, screen } from "@testing-library/react";
+import MultipleAndSingleQuestion from "./MultipleAndSingleQuestion";
+import {clickNoneBox} from "../utils/utils";
 
-test('test a describtion', () => {
+test("test a describtion", () => {
     const mockAnswers = [
         {
             "answers": [
@@ -50,7 +50,7 @@ test('test a describtion', () => {
             ],
             "describtion": "Have you ever had an episode of schizophrenia and/or psychosis?"
         }
-    ]
+    ];
   render(<MultipleAndSingleQuestion 
             questionSetId = {0}
             choiceAnswers = {mockAnswers}
@@ -60,23 +60,23 @@ test('test a describtion', () => {
 });
 
 describe("checking none checkbox -logic", () => {
-    test('click none box false->true, should flap up others', ()=>{
-        const currentCheckBoxState = [true, true, false]
-        const outPut = clickNoneBox(currentCheckBoxState, 2)
-        expect(outPut).toEqual([false, false, true])
-    })
+    test("click none box false->true, should flap up others", ()=>{
+        const currentCheckBoxState = [true, true, false];
+        const outPut = clickNoneBox(currentCheckBoxState, 2);
+        expect(outPut).toEqual([false, false, true]);
+    });
 
-    test('click none box true->false, keep others', ()=>{
-        const currentCheckBoxState = [false, false, true]
-        const outPut = clickNoneBox(currentCheckBoxState, 2)
-        expect(outPut).toEqual([false, false, false])
-    })
+    test("click none box true->false, keep others", ()=>{
+        const currentCheckBoxState = [false, false, true];
+        const outPut = clickNoneBox(currentCheckBoxState, 2);
+        expect(outPut).toEqual([false, false, false]);
+    });
 
-    test('click others and none box selected, none box update', ()=>{
-        const currentCheckBoxState = [false, false, true]
-        const outPut = clickNoneBox(currentCheckBoxState, 0)
-        expect(outPut).toEqual([true, false, false])
-    })
+    test("click others and none box selected, none box update", ()=>{
+        const currentCheckBoxState = [false, false, true];
+        const outPut = clickNoneBox(currentCheckBoxState, 0);
+        expect(outPut).toEqual([true, false, false]);
+    });
 
 });
 
