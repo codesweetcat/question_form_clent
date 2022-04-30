@@ -15,7 +15,6 @@ function App() {
     fetch('http://localhost:9898')
         .then(response => response.json())
         .then(data => {
-          console.log(data, JSON.parse(data.question_sets[0]['answers']))
           const {question_sets} = data
           setQuestionSets(question_sets)}
           );
@@ -41,9 +40,8 @@ function App() {
             res: allAnswers
           }),
         });
-        let resJson = await res.json();
         if (res.status === 200) {
-          alert("User created successfully");
+          alert("Answers add successfully!");
         } else {
           alert("Some error occured");
         }
@@ -59,7 +57,7 @@ function App() {
       <form onSubmit={hanleSubmit}>
 
       {questionSets && questionSets.map((q,questionIdex)=>{
-        const choiceAnswers = JSON.parse(q.answers)
+        const choiceAnswers = q.answers
         return(
               <Box
                 sx={{

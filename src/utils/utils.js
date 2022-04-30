@@ -1,6 +1,6 @@
 
 
-  const getSingleAnswers =  (answerBrief,choiceAnswers, answerIndex, position)=> {
+  export const getSingleAnswers =  (answerBrief,choiceAnswers, answerIndex, position)=> {
     const checkedAnswerTitle = choiceAnswers[answerIndex]['describtion']
     console.log('checkedAnswerTitle',checkedAnswerTitle)
 
@@ -17,9 +17,14 @@
         }
 }
 
-const logger = {
-    getSingleAnswers,
 
-}
-
-    export default logger
+  export const clickNoneBox = (checkedState,answerIndex)=>{
+      const isCurrSelectedNone = checkedState[answerIndex]
+      let outputState = []
+      if(!isCurrSelectedNone){//current not been kicked, need flap up
+        outputState = checkedState.map((item, index)=>index === answerIndex ? !item :false)
+      }else{
+        outputState = checkedState.map((item, index)=>index === answerIndex ? !item :item)
+      }
+      return outputState
+    }

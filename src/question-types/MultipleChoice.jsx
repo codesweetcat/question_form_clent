@@ -1,6 +1,7 @@
 import React,{forwardRef, useImperativeHandle, useState} from 'react';
 import {Checkbox, FormGroup, FormControlLabel} from '@mui/material';
 import './MultipleAndSingle.css'
+import {clickNoneBox} from '../utils/utils'
 
 
 const MultipleChoice = forwardRef(({questionSetId,choiceAnswers, questionIdex},ref) => {
@@ -25,7 +26,15 @@ const MultipleChoice = forwardRef(({questionSetId,choiceAnswers, questionIdex},r
   }))
 
   const getUpdatedCheckedState = (answerIndex)=>{
-   return checkedState.map((item, index)=>index === answerIndex ? !item :item)
+    //check none box
+   if(checkedState.length === answerIndex+1){
+      return  clickNoneBox(checkedState,answerIndex)
+    }
+   else {//check not none box
+    const flapedState =  checkedState.map((item, index)=>index === answerIndex ? !item :item)
+    flapedState[checkedState.length-1]=false
+    return flapedState
+    }
   }
   const getMultipleAnswers = (choiceAnswers, answerIndex)=>{
     const checkedAnswerTitle = choiceAnswers[answerIndex]['answer_title']
