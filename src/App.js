@@ -26,8 +26,12 @@ function App() {
       const answersMultipleAndSingleQuestion = answersMultipleAndSingleRef.current.getMultipleAndSingleQuestionAnswers();
       const answersMultipleQuestion = answersMultipleRef.current.getMultipleQuestionAnswers();
       const allAnswers = [answersMultipleAndSingleQuestion,answersMultipleQuestion]
-      
-      console.log('answersMultipleAndSingleQuestion',answersMultipleAndSingleQuestion,answersMultipleQuestion)
+      const hasEmptyAnswerBrief = allAnswers.some(a=>a.answers_brief.length === 0)
+      if(hasEmptyAnswerBrief) {
+        alert("Some error occured");
+        return
+      }
+      console.log('answersMultipleAndSingleQuestion',hasEmptyAnswerBrief,answersMultipleAndSingleQuestion,answersMultipleQuestion)
       try {
         
         let res = await fetch("http://localhost:9898/postQuestion", {
